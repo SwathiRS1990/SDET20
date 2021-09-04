@@ -1,9 +1,9 @@
 package com.vtiger.comcast.genericutility;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 import org.openqa.selenium.WebDriver;
@@ -45,22 +45,22 @@ public class BaseClass {
 	@BeforeSuite(groups = {"SmokeTest", "RegressionTest"})
 	public void configBS() throws Throwable {
 		//Register the Driver
-		Driver dbDriver = new Driver();
-		DriverManager.registerDriver(dbDriver);
-		
-		//Establish the connection
-		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/commonData", "root", "root");
-		
-		//Issue the statement
-		Statement statement = connection.createStatement();
-		
-		//Execute the query.
-		int result = statement.executeUpdate("insert into commondata values(1, 'TATA')");
-		ResultSet resultSet = statement.executeQuery("select orgname from commondata");
-		while(resultSet.next())
-		{
-			organizationName = resultSet.getString(1);
-		}		
+//		Driver dbDriver = new Driver();
+//		DriverManager.registerDriver(dbDriver);
+//		
+//		//Establish the connection
+//		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/commonData", "root", "root");
+//		
+//		//Issue the statement
+//		Statement statement = connection.createStatement();
+//		
+//		//Execute the query.
+//		int result = statement.executeUpdate("insert into commondata values(1, 'TATA')");
+//		ResultSet resultSet = statement.executeQuery("select orgname from commondata");
+//		while(resultSet.next())
+//		{
+//			organizationName = resultSet.getString(1);
+//		}		
 	}
 	
 	//@Parameters("browser")
@@ -68,8 +68,12 @@ public class BaseClass {
 	//public void configBC(String browser) throws Throwable {
 	public void configBC() throws Throwable {
 		//Get the values from the FileUtility
-		String browser = flib.getPropertyValue("browser");
-		String url = flib.getPropertyValue("url");
+		//String browser = flib.getPropertyValue("browser");
+		//String url = flib.getPropertyValue("url");
+		
+		//Maven Parameters from command line.
+		String browser = System.getProperty("browser");
+		String url = System.getProperty("url");
 		
 		if(browser.equals("chrome")) {
 			driver = new ChromeDriver();
@@ -112,7 +116,7 @@ public class BaseClass {
 	
 	@AfterSuite(groups = {"SmokeTest", "RegressionTest"})
 	public void configAS() throws Throwable {
-		connection.close();
+	//	connection.close();
 	}
 
 

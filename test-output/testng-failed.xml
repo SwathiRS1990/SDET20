@@ -8,10 +8,12 @@
           <include name="createContactWithOrganizationNameTest"/>
           <include name="configAS"/>
           <include name="configAC"/>
+          <include name="createContactTest"/>
           <include name="configureBM"/>
           <include name="configBS"/>
           <include name="configBC"/>
           <include name="configAM"/>
+          <include name="createContactWithImageTest"/>
         </methods>
       </class> <!-- com.vtiger.comcast.contactstest.CreateContactTest -->
     </classes>
